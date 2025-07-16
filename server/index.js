@@ -16,10 +16,11 @@ mongoose.connect(process.env.MONGO_URI).then(() => console.log("MongoDB connecte
   .catch(err => console.error("MongoDB connection error:", err));
 
 // Middlewares
-const ORIGIN = process.env.CLIENT_URL
+const ORIGIN = process.env.CLIENT_URL || 'http://localhost:5173'
+console.log(ORIGIN)
 app.use(express.json());
 app.use(cors({
-  origin: [ORIGIN, 'http://localhost:5173'],
+  origin: ORIGIN,
   credentials: true
 }));
 app.use(helmet());
