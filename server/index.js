@@ -39,16 +39,6 @@ app.get('/', (req, res) => {
   res.send('Job Recommendation API is running.');
 });
 
-app.get('/api-docs', (req, res) => {
-  res.send(`
-    <h1>API Documentation</h1>
-    <p>Use the following endpoints:</p>
-    <ul>
-      <li><strong>GET /</strong> - Check if the server is running.</li>
-      <li><strong>GET /api-docs</strong> - View this documentation.</li>
-    </ul>
-  `);
-});
 
 //routes 
 const authRouts = require('./routes/auth.route');
@@ -65,5 +55,4 @@ app.use('/api/employers', employerRoutes);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on ${PORT}`);
-  console.log(`API Documentation: http://localhost:${PORT}/api-docs`);
 });
